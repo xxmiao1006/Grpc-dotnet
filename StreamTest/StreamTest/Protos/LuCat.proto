@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "StreamTest.Protos";
+
+import "google/protobuf/empty.proto";
+package LuCat; //定义包名
+
+//定义服务
+service LuCat{
+    //定义吸猫方法
+	rpc SuckingCat(google.protobuf.Empty) returns(SuckingCatResult);
+}
+
+//dsjflskjflsj
+message SuckingCatResult{
+	string message = 1;
+	int32 returnCode = 2;
+	
+}

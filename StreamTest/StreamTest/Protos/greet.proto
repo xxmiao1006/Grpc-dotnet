@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option csharp_namespace = "StreamTest";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+	// Sends a greeting
+	rpc SayHello (HelloRequest) returns (HelloReply);
+	rpc SaveAll (stream SaveAllRequest) returns (SaveAllReply);
+	rpc GetAll (GetAllRequest) returns (stream GetAllReply);
+	rpc ReadySetGo (stream RaceMessage) returns (stream RaceMessage);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+	string name = 1;
+	int32 sleep = 2;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+	string message = 1;
+}
+
+message SaveAllRequest{
+	user user = 1;
+}
+
+message SaveAllReply{
+	int32 returnCode = 1;
+	string returnMessage = 2;
+}
+
+message user{
+	string userName = 1;
+	int32 age = 2;
+}
+
+message GetAllRequest{
+	int32 age = 1;
+}
+
+message GetAllReply{
+	user user = 1;
+}
+
+message RaceMessage {
+	int32 count = 1;
+}
